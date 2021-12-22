@@ -18,12 +18,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Hoggoii                          # the main title
+title: honggoii                          # the main title
 
-tagline: Welcome Honggoii World   # it will display as the sub-title
+tagline: Android Devleoper💚   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Android Devleoper💚
+  Welcome Honggoii World✨
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://honggoii.github.io'
