@@ -32,12 +32,52 @@ void Permutation(int cnt) {
 순열 + (1,1,1) (2,2,2) (3,3,3)
 
 
+```java
+void Permutation(int cnt) {
+    if (cnt == 3) {
+        return;
+    }
+    
+    for(int i = 0 ; i < 5; i++) {
+        visit[cnt] = arr[i];//cnt번에 방문한 값은 arr[i]
+        Permutation(cnt+1);
+    }
+}
+```
 
 ## 조합
 (1,2,3) (1,3,2) (2,3,1) (2,1,3) (3,2,1) (3,1,2) => `모두 같은 것`으로 취급
 
 
+```java
+void Combination(int idx, int cnt) {
+    if (cnt == 3) {
+        return;
+    }
+    
+    for(int i = idx ; i < 5; i++) {
+        if(visit[i]) continue;
+        visit[i] = true;
+        Combination(i, cnt+1);
+        visit[i] = false;
+    }
+}
+```
+
 
 ## 중복 조합
 조합 + (1,1,1) (2,2,2) (3,3,3) 
 
+
+```java
+void Combination(int idx, int cnt) {
+    if (cnt == 3) {
+        return;
+    }
+    
+    for(int i = idx ; i < 5; i++) {
+        visit[cnt] = arr[i];//cnt번에 방문한 값은 arr[i]
+        Combination(i, cnt+1);
+    }
+}
+```
