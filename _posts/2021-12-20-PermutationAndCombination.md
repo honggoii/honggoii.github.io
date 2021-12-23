@@ -17,7 +17,7 @@ void Permutation(int cnt) {
         return;
     }
     
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0 ; i < 5; i++) {
         if(visit[i]) continue;
         visit[i] = true;
         Permutation(cnt+1);
