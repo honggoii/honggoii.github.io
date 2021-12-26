@@ -14,7 +14,7 @@ mainfont: GowunDodum-Regular
 - 애플리케이션 안에서 독립된 실행 단위 => 컴포넌트끼리 서로 종속되지 않아서 코드 결합이 발생하지 않는다.
 - 안드로이드에서는 하나의 클래스가 하나의 컴포넌트이다. 개발자가 작성하는 클래스 모두 하나의 컴포넌트가 되는 것은 아니다. 런타임 때 생명주기를 누가 관리하느냐에 따라 컴포넌트 클래스가 될지 결정된다. 아래 그림과 같이 생명주기를 안드로이드 시스템이 관리하면 `컴포넌트 클래스`가 되고 개발자 스스로가 관리하면 `일반 클래스`가 된다.
 
-<img width="50%" height="50%" src="https://user-images.githubusercontent.com/46019755/147406421-487032a7-40b5-4438-a561-797c4a1693a7.png">
+<img width="50%" height="50%" alt="component image" src="https://user-images.githubusercontent.com/46019755/147406421-487032a7-40b5-4438-a561-797c4a1693a7.png">
 
 
 ## 안드로이드 4대 컴포넌트
