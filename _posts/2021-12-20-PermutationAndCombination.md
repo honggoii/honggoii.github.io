@@ -8,9 +8,11 @@ mainfont: GowunDodum-Regular
 ---
 
 ## 순열
+---
 (1,2,3) (1,3,2) (2,3,1) (2,1,3) (3,2,1) (3,1,2) => `모두 다른 것`으로 취급
 
 ### c++
+---
 ```c++
 void Permutation(int cnt) {
     if (cnt == 3) {
@@ -27,6 +29,7 @@ void Permutation(int cnt) {
 ```
 
 ### java
+---
 ```java
 static int n, m; // 1~n까지 m개를 뽑는다.
 static int[] selected, used;
@@ -55,9 +58,11 @@ static void permutation(int cnt) {
 
 
 ## 중복 순열
+---
 순열 + (1,1,1) (2,2,2) (3,3,3)
 
 ### c++
+---
 ```c++
 void Permutation(int cnt) {
     if (cnt == 3) {
@@ -72,6 +77,7 @@ void Permutation(int cnt) {
 ```
 
 ### java
+---
 ```java
 static int n, m; // 1~n까지 m개를 뽑는다.
 static int[] selected;
@@ -95,9 +101,11 @@ static void permutation(int cnt) {
 ```
 
 ## 조합
+---
 (1,2,3) (1,3,2) (2,3,1) (2,1,3) (3,2,1) (3,1,2) => `모두 같은 것`으로 취급
 
 ### c++
+---
 ```c++
 void Combination(int start, int cnt) {
     if (cnt == 3) {
@@ -114,6 +122,7 @@ void Combination(int start, int cnt) {
 ```
 
 ### java
+---
 ```java
 static void combination(int start, int k) {
     if (k == m) { // m개를 골랐다!
@@ -134,9 +143,11 @@ static void combination(int start, int k) {
 
 
 ## 중복 조합
+---
 조합 + (1,1,1) (2,2,2) (3,3,3) 
 
 ### c++
+---
 ```c++
 void Combination(int start, int cnt) {
     if (cnt == 3) {
@@ -151,6 +162,7 @@ void Combination(int start, int cnt) {
 ```
 
 ### java
+---
 ```java
 static void combination(int start, int k) {
     if (k == m) { // m개를 골랐다!
