@@ -7,6 +7,16 @@ tags: [android]
 mainfont: GowunDodum-Regular
 ---
 
+
+## Constraint Layout
+---
+안드로이드에서 제공하는 것이 아닌 `androidx`에서 제공하는 라이브러리로 `build.gradle` 파일에서 빌드 설정을 해주어야 한다.
+```
+implementation 'androidx.constraintlayout:constraintlayout:$version'
+```
+
+
+
 ## Linear Layout
 ---
 `orientation`이라는 속성을 통해 뷰를 가로(`horizontal`) / 세로(`vertical`) 로 배치하는 레이아웃 클래스이다. 
@@ -40,6 +50,13 @@ mainfont: GowunDodum-Regular
 ## Frame Layout
 ---
 뷰를 추가한 순서대로 겹쳐 만드는 레이아웃 클래스이다. 겹쳐서 만들기때문에 주로 `visibility` 속성을 이용해서 액티비티 코드를 통해 각 이벤트에 맞게 필요한 뷰를 보여줄 때 주로 사용한다. 
+
+
+## Grid Layout
+---
+행과 열로 구성된 테이블을 만드는 레이아웃 클래스이다. `Linear Layout`처럼 `orientation` 속성으로 가로/세로 방향으로 뷰를 나열하는데 차이점은 
+`rowCount`와 `columnCount` 속성에 개수를 주면 한 줄에 해당 개수만큼만 출력하고 자동으로 줄바꿈을 해준다는 것이다. `Grid Layout`에 속하는 뷰들은 기본으로 `wrap_content`로 
+지정되므로 따로 `layout_width`와 `layout_height` 속성을 주지 않아도 된다. 
 
 
 
