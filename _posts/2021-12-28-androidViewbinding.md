@@ -45,6 +45,19 @@ setContentView(binding.root)
 이렇게 바인딩 객체에 등록된 뷰를 사용하기 위해서는 xml 파일에 등록한 id값을 가져오면 된다. 예를들어 id가 text1인 TextView를 가져오려면 `binding.text1`과 같이 가져오면 된다.
 
 
+## LayoutInflater
+---
+레이아웃 xml 파일을 뷰 객체로 생성해서 메모리에 할당해주는 클래스.
+
+```kotlin
+val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+val rootView = inflater.inflate(R.layout.activity_main, null)
+```
+
+`inflater()`는 xml의 루트 태그의 객체를 반환한다. 
+
+
+
 
 ## 참고 자료
 ---
