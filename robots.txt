@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: http://honggoii.github.io/sitemap.xml
