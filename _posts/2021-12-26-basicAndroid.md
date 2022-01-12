@@ -26,6 +26,12 @@ mainfont: GowunDodum-Regular
 4. `Broadcast Receiver` : 사용자 이벤트가 아닌, 부팅 완료, 배터리 방전과 같은 시스템 이벤트가 발생할 때 실행되는 컴포넌트.
 
 
+## Activity
+---
+
+<img src="https://user-images.githubusercontent.com/46019755/148953871-8d0496bd-c4ef-40d4-8a7d-8c2e15ea6a6b.png">
+
+
 ## Resource
 ---
 코드에서 정적인 값(항상 똑같은 값)을 분리한 것이다. 
@@ -53,7 +59,10 @@ XML 파일에서 각 View를 구분하기 위해 id를 지정하는데 이때도
 
 ## Intent
 ---
-컴포넌트를 실행하기 위해 시스템에 전달하는 메시지. 데이터를 담는 클래스 
+컴포넌트를 실행하기 위해 시스템에 전달하는 메시지. 데이터를 담는 클래스. 
+
+### 인텐트 엑스트라 데이터(Intent Extra data)
+인텐트에 컴포넌트 실행을 요청할 때 함께 전달하는 데이터.
 
 
 ## 안드로이드 운영체제 구조
