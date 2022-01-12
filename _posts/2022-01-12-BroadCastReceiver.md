@@ -22,7 +22,7 @@ mainfont: GowunDodum-Regular
 ---
 ```kotlin
 class MyReceiver : BroadcastReceiver() {
-    override fun onReceive(context: COntext, intent: Intent) {
+    override fun onReceive(context: Context, intent: Intent) {
 
     }
 }
