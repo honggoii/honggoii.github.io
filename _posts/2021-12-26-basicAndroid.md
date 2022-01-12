@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Android 컴포넌트와 운영체제 구조"
-date:   2021-12-26 20:00:50 +0800
+date:   2021-12-26 20:10:50 +0800
 categories: [Android]
 tags: [android]
 mainfont: GowunDodum-Regular
