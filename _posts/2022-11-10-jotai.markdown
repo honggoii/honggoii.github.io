@@ -1,0 +1,109 @@
+---
+layout: post
+title:  "Jotai"
+date:   2022-11-10 22:01:43 +0900
+categories: ReactNative
+---
+
+원시적이고 유연한 상태 관리 라이브러리
+
+<span style="background-color:white; color:blue">Recoil</span>
+에서 명감받은 `atomic` 모델을 사용한 상향식 접근법
+
+### 특징
+
+- Minimal API
+- TypeScript oriented
+- Tiny bundle size (3kb)
+- Many extra utils and official integrations
+- Supports Next.js and React Native
+
+### 개념
+
+- <span style="background-color:white; color:blue">React</span>에서 추가적인 리렌더링 이슈를 해결하기위해 탄생
+- 이러한 리렌더링 이슈를 <span style="background-color:white; color:blue">useContext</span> + <span style="background-color:white; color:blue">useState</span>로 해결하면 추가적인 문제 발생
+  - Provider hell
+  - Dynamic addition/deletion
+
+### 두가지 원칙
+1. <span style="background-color:white; color:blue">Primitive</span>: <span style="background-color:white; color:blue">useState</span>처럼 기초적인 인터페이스가 단순
+2. <span style="background-color:white; color:blue">Flexible</span>: 파생된 atoms은 다른 atoms과 결합할 수 있고 부수 작용으로 useReducer 스타일 가능
+
+### Atom 사용하기
+
+```typescript
+import { atom } from 'jotai'
+
+const priceAtom = atom(10)
+const messageAtom = atom('hello')
+const productAtom = atom({ id: 12, name: 'good stuff' })
+```
+
+### Atom의 세가지 패턴
+
+1. 읽기 전용 atom
+    ```typescript
+    const readOnlyAtom = atom((get) => get(priceAtom) * 2)
+    ```
+2. 쓰기 전용 atom
+    ```typescript   
+    const writeOnlyAtom = atom(
+        null, // it's a convention to pass `null` for the first argument
+        (get, set, update) => {
+            // `update` is any single value we receive for updating this atom
+            set(priceAtom, get(priceAtom) - update.discount)
+        }
+    )
+    ```
+3. 읽기-쓰기 atom
+    ```typescript
+    const readWriteAtom = atom(
+        (get) => get(priceAtom) * 2,
+        (get, set, newPrice) => {
+            set(priceAtom, newPrice / 2)
+            // you can set as many atoms as you want at the same time
+        }
+    )
+    ```
+
+- 읽기 함수 <span style="background-color:white; color:blue">get</span>: atom 값을 읽는 함수. 반응적이고 읽기 종속성 추적
+- 쓰기 함수 <span style="background-color:white; color:blue">get</span>: 추적되지 않는 atom 값을 읽는 함수. async 값이 unresolved된 값을 읽을 수 없다. 
+- 쓰기 함수 <span style="background-color:white; color:blue">set</span>: atom에 값을 쓰는 함수
+
+### useAtom
+
+- <span style="background-color:white; color:blue">useState</span>처럼 선언하고 값을 읽고 수정
+    ```typescript
+    const [value, updateValue] = useAtom(anAtom)
+    ```
+- <span style="background-color:white; color:blue">useAtom</span>을 통해 atom을 사용한 경우에만 state에 초기값이 상태에 저장
+- 파생된 atom이라면, 초기값을 계산하는 읽기 함수 호출
+- atom이 더 이상 사용되지 않거나(atom을 사용하는 모든 컴포넌트가 unmount), atom이 더 이상 존재하지 않으면, state 값은 gabage에 수집
+
+
+
+## 다른 라이브러리와 비교해보기
+---
+### vs <span style="background-color:white; color:blue">Zustand</span>
+
+|       | Jotai      | Zustand      |  
+|:------------:|:------------|:------------|   
+| 이름 | 일본어로 "state" | 독일어로 "state" |
+| 비유 | Recoil | Redux |
+| state 위치 | React Component Tree <span style="background-color:white; color:blue">안</span> | React Store <span style="background-color:white; color:blue">밖</span> |
+| state 구조 | atoms로 구성된 <span style="background-color:white; color:blue">상향식</span> | 하나의 객체. <span style="background-color:white; color:blue">하향식</span>|
+| 차이 1 | <span style="background-color:white; color:red">Primitive</span> atoms로 구성되고 서로 결합 | <span style="background-color:white; color:red">Single</span> Store (여러개 만들 수는 있음) |
+| 차이 2 | <span style="background-color:white; color:blue">useState</span>+<span style="background-color:white; color:blue">useContext</span> 대체 가능. 많은 contexts를 만드는 것 대신, 하나의 큰 context가 atoms 공유 | 외부 Store. hook이 외부 세계를 React 세계로 연결 |
+| 사용 추천 | <span style="background-color:white; color:blue">useState</span>+<span style="background-color:white; color:blue">useContext</span> 대신할 때 <br> 코드 분리할 때  <br>  Suspense 사용할 때 | React 외부 state 값을 업데이트할 때 | 
+
+### vs <span style="background-color:white; color:blue">Recoil</span>
+
+|       | Jotai      | Recoil      |  
+|:------------:|:------------|:------------|   
+| 기초 | 쉽게 배우기 위한 Primitive API에 초점. Zustand와 같은 철학 | 복잡한 요구사항을 가진 큰 앱 |
+| 차이 | atom 객체 참조 식별에 의존 | atom string key에 의존 |
+
+
+---
+#### 참고 자료
+> [공식문서](https://jotai.org/)
