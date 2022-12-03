@@ -1,0 +1,95 @@
+---
+layout: post
+title:  "Dijkstra, 다익스트라"
+date:   2022-12-03 14:26:43 +0900
+categories: Algorithm
+---
+
+## Dijkstra(다익스트라) 알고리즘이란?
+
+다익스트라 알고리즘은 <span style="background-color:white; color:blue">최단 경로를 구할 때</span> 사용한다.
+
+최단 거리를 갱신하며 해를 구해가므로 <span style="background-color:white; color:blue">그리디 알고리즘</span> 유형으로 볼 수도 있다.  
+
+이때, "최단"을 보장하기 위해 간선에 부여된 **가중치는 음수가 될 수 없다.**
+
+방문을 확정하는 경우 해당 간선에 대한 경로 값은 갱신할 수 없고 최단 경로가 보장되어야한다.
+
+그런데 이후에 음수 간선이 나오게 되면 최단 경로가 바뀌게 되고 방문을 확정한 간선에 대한 최단 경로는 최단 경로라고 할 수 없다. 그래서 음수가 될 수 없다고 생각한다.
+
+다익스트라 알고리즘은 한 정점을 방문하고, 방문한 정점과 인접한 정점들의 거리를 갱신하면서 =최단 경로를 구하게 된다.
+
+경로를 갱신할 때는 2가지를 비교하여 최소값으로 갱신한다.
+1. 현재 저장된 거리
+2. 직전에 방문한 노드에 저장된 거리 + 그 노드와 나와의 거리
+
+## Dijkstra의 동작
+
+![image](https://user-images.githubusercontent.com/46019755/205425765-bd3fa6fa-d59d-4e30-a6bc-bee138f068a8.png)
+
+시작을 0번 정점이라고 했을 때, dist[0]은 0이고 나머지 정점까지의 거리는 무한대가 된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205425835-ebadb2f8-92b6-4cdd-9d78-52353877a9fb.png)
+
+0번 정점을 방문 확정하고 0번과 인접한 정점 1, 2, 3을 확인한다.  
+dist[1] = min(dist[1], dist[0]+vertex[0][1]) => 무한대 vs 7  
+dist[2] = min(dist[2] dist[0]+vertex[0][2]) => 무한대 vs 14  
+dist[3] = min(dist[3], dist[0]+vertex[0][3]) => 무한대 vs 9  
+을 통해 경로를 최단 값으로 갱신하고 이때, 가장 짧은 경로인 1번 정점이 다음 방문 정점이된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205425944-91242b7b-e3b6-42fd-9ed5-fe0d8f446a34.png)
+
+
+1번 정점을 방문 확정하고 1번과 인접한 정점 3, 5를 확인한다.  
+dist[3] = min(dist[3], dist[1]+vertex[1][3]) => 9 vs 17(7+10)  
+dist[5] = min(dist[5], dist[1]+vertex[1][5]) => 무한대 vs 22(7+15)  
+를 통해 경로를 최단 값으로 갱신하고, 이때 가장 짧은 경로인 3번 정점이 다음 방문 정점이 된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205425964-1254c128-63e6-46d1-9f25-6ee5d5509c7b.png)
+
+3번 정점을 방문 확정하고 3번과 인접한 정점 2, 5를 확인한다.  
+dist[2] = min(dist[2], dist[3]+vertex[3][2]) => 14 vs 11(9+2)   
+dist[5] = min(dist[5], dist[3]+vertex[3][5]) => 22 vs 20(9+11)    
+를 통해 경로를 최단 값으로 갱신하고, 이때 가장 짧은 경로인 2번 정점이 다음 방문 정점이 된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205425987-292b1e62-3c7a-4bbd-a6fd-138d3c2a08ff.png)
+
+2번 정점을 방문 확정하고 2번과 인접한 정점 4를 확인한다.  
+dist[4] = min(dist[4], dist[2]+vertex[2][4]) => 무한대 vs 20(11+9)    
+를 통해 경로를 최단 값으로 갱신하고, 이때 가장 짧은 경로인 4번 정점이 다음 방문 정점이 된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205426003-3393dfbc-1087-4dae-8a13-1a5cae790525.png)
+
+4번 정점을 방문 확정하고 4번과 인접한 정점 5를 확인한다.   
+dist[5] = min(dist[5], dist[4]+vertex[4][5]) => 20 vs 26(20+6)   
+를 통해 경로를 최단 값으로 갱신하고, 이때 가장 짧은 경로인 5번 정점이 다음 방문 정점이 된다.
+
+![image](https://user-images.githubusercontent.com/46019755/205426014-5ad0a0d3-1e52-41ad-bfbc-20217c9006da.png)
+
+모든 노드가 방문 완료되면 종료!
+
+## 로직
+1. 최단 거리 테이블 무한으로 초기화
+2. 시작 노드를 거리 0으로 해서 우선순위 큐에 넣는다.
+3. 큐가 빌때까지
+    1. 하나 꺼낸다.
+    2. 현재 노드의 거리테이블 값이 현재 거리보다 작으면, 이미 방문했으므로 pass
+    3. 현재 노드의 인접 노드를 확인한다.
+       1. 현재 노드를 거쳐가는 비용을 계산한다.
+       2. 계산한 비용이 더 작으면 인접 노드 거리테이블을 갱신하고 우선순위 큐에 넣는다.
+
+
+## 시간 복잡도
+vertext가 n개, edge가 m개인 그래프에서 다익스트라의 시간 복잡도는 다음과 같다.
+
+- <span style="background-color:white; color:blue">O(n)</span> : vertext n개 무한으로 초기화
+- 현재 방문하지 않은 vertex중에 shortest path가 가장 짧은 - vertex를 찾으려면 vertex당 <span style="background-color:white; color:blue">O(n)</span>
+- 거리를 갱신하려면 vertext당 O(n), 이때 연결리스트를 사용하면 <span style="background-color:white; color:blue">O(degree(v))</span>
+- vertex n개에 대해 해주어야하므로 총 수행시간은 <span style="background-color:white; color:blue">O(n+n*n) = O(n^2)</span>
+
+## 더 빠른 Dijkstra
+다익스트라를 이용하여 문제를 풀고자 할 때, shortest path를 찾기 위해 모든 vertex를 탐색해봐도 되지만, 오름차순 정렬된 <span style="background-color:white; color:blue">priority queue</span>를 이용하면 더 빠르게 찾을 수 있다.
+
+거리를 갱신할 때마다 priority queue에 넣어주면 shortest path가 top에 놓이게 되기때문이다.
+
+이때의 시간 복잡도는 <span style="background-color:white; color:blue">O(ElogV)</span> (E는 간선, V는 노드)이다.
