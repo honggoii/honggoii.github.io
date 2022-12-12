@@ -46,8 +46,8 @@ const usetTodoCreator = () => {
 
 ---
 #### 참고 자료
-> https://tech.kakao.com/2022/06/13/react-query/
-> https://fe-developers.kakaoent.com/2022/220224-data-fetching-libs/
-> https://tanstack.com/query/v4/docs/overview?from=reactQueryV3&original=https://react-query-v3.tanstack.com/overview
-> https://techblog.woowahan.com/6339/
-> https://tech.osci.kr/2022/07/13/react-query/
+> https://tech.kakao.com/2022/06/13/react-query/  
+> https://fe-developers.kakaoent.com/2022/220224-data-fetching-libs/   
+> https://tanstack.com/query/v4/docs/overview?from=reactQueryV3&original=https://react-query-v3.tanstack.com/overview    
+> https://techblog.woowahan.com/6339/    
+> https://tech.osci.kr/2022/07/13/react-query/    

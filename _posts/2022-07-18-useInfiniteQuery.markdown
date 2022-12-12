@@ -35,10 +35,10 @@ const {
 #### Parameters
 - **queryKey**: 고유 key 값
 - **queryFn**: promise를 반환하는 함수
-- **getNextPageParam: (lastPage, allPages) => unknown | undefined**
+- **getNextPageParam: (lastPage, allPages) => unknown \| undefined**
     - 호출된 페이지의 마지막 데이터를 담은 lastPage와 모든 페이지를 담은 allPages를 전달
     - 다음에 전달할 페이지를 리턴해주면 pageParam 에 들어가고, 더이상 불러올 페이지가 없으면 `undefined`를 반환한다.
-- **getPreviousPageParam: (firstPage, allPages) => unknown | undefined**
+- **getPreviousPageParam: (firstPage, allPages) => unknown \| undefined**
     - 호출된 페이지의 처음 데이터를 담은 firstPage와 모든 페이지를 담은 allPages를 전달
     - 이전에 전달할 페이지를 리턴해주면 `pageParam` 에 들어가고, 더이상 불러올 페이지가 없으면 `undefined`를 반환한다.
 
@@ -46,7 +46,7 @@ const {
 - **data**
   - **pages**: 한 번 조회 시 가져온 데이터를 담은 리스트
   - **pageParams**: 한 번 조회 시 사용한 파라미터를 담은 리스트
-- **fetchNextPage: (options?: FetchNextPageOptions) => Promise<UseInfiniteQueryResult>**
+- **fetchNextPage: (options?: FetchNextPageOptions) => Promise\<UseInfiniteQueryResult\>**
   - 다음 페이지를 가져오라는 함수
 - **hasNextPage: boolean**
   - 가져올 다음 페이지가 있으면 `true` 반환
@@ -83,7 +83,7 @@ const {data, fetchNextPage, hasNextPage} = useInfiniteQuery(
 
 ---
 #### 참고 자료
-> https://tanstack.com/query/v4/docs/reference/useInfiniteQuery
-> https://reactnative.dev/docs/flatlist
-> https://jforj.tistory.com/243
-> https://jforj.tistory.com/246
+> https://tanstack.com/query/v4/docs/reference/useInfiniteQuery  
+> https://reactnative.dev/docs/flatlist  
+> https://jforj.tistory.com/243  
+> https://jforj.tistory.com/246  
