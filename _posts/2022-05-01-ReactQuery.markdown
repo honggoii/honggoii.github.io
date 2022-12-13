@@ -11,22 +11,11 @@ categories: ReactNative
 
 <span style="background-color:white; color:blue">React Query</span>는 서버쪽 상태를 관리하기에 가장 적합한 라이브러리 중 하나
 
-#### Server state
-제어하거나 소유하지 않는 위치에서 원격으로 지속
-
-fetching과 updating에 비동기 API 필요
-
-공유한 소유권을 의미하며 다른 사용자가 알지 못하는 사이에 변경할 수 있다.
-
-주의를 기울이지 않으면 응용 프로그램에서 구식이 될 수 있다.
 
 #### React Query 장점
-복잡하고 잘못 이해된 많은 코드를 제거하고 몇 줄의 React Query 로직으로 대체
-
-새 서버상태 데이터 소스를 연결할 걱정없이 애플리케이션을 보다 쉽게 유지보수하고 새 기능을 구축
-
-더 빠르고 응답성이 향상되어 최종 사용자에게 직접적인 영향
-대역폭을 절약하고 메모리 성능 향상
+- 기존 Redux로 만든 구조에 비해 코드 분량 감소
+- 빠르고 응답성 향상
+- 메모리 성능 향상
 
 
 #### useMutation
