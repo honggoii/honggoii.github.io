@@ -8,3 +8,63 @@ categories: Android
 날 힘들게 하는 웹뷰
 
 정리해야함
+
+```kotlin
+class WebViewTest {
+
+    private lateinit var webView: WebView
+
+    /**
+     * JavaScript 이벤트에 대응할 함수를 정의한 클래스
+     */
+    inner class AndroidBridge {
+        @JavascriptInterface
+        @SuppressWarnings("unused")
+        fun 안드로이드에서 실행할 클래스명(result: String) {
+            Log.e("웹에서 전달받은 데이터 : $result")
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(레이아웃 파일명)
+        startWebView()
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun startWebView() {
+
+        webView = findViewById(R.id.webView)
+
+        /**
+         * 웹뷰 연동
+         */
+        webView.apply {
+            webViewClient = WebViewClient() // WebViewClient 세팅
+            settings.javaScriptEnabled = true // 웹뷰에서 자바 스크립트 사용
+            addJavascriptInterface(AndroidBridge(), "Android") // JavaScript 이벤트에 대응할 함수를 정의 한 클래스 추가
+        }
+
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                webView.loadUrl("javascript:자바스크립트에서 실행할 함수명();")
+            }
+        }
+
+        webView.loadUrl("실행할 웹 URL") // 외부 브라우저 실행
+    }
+
+}
+```
+
+
+```jsx
+function 자바스크립트에서 실행할 함수명() {
+	.
+	.
+	.
+
+	// 안드로이드에서 받을 함수 호출
+  window.Android.안드로이드에서 실행할 클래스명(result);     
+}
+```
