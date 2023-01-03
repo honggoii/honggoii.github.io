@@ -57,8 +57,10 @@ iOS에서 release 모드로 빌드하려면 bundle을 말아줘야 하는데, bu
 `'Web.bundle/test.html'`
 
 ```jsx
+const uri = Platform.OS === 'android' ? 'file:///android_asset/test.html' : 'Web.bundle/test.html';
+
 <WebView
-  source={{uri: Platform.OS === 'android' ? 'file:///android_asset/test.html' : 'Web.bundle/test.html'}}
+  source={uri: uri}
 />
 ```
 
