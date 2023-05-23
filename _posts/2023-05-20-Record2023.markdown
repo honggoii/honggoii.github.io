@@ -17,7 +17,7 @@ categories: Record
 
 - Java Queue `add()` vs `offer()` -> 예외 발생 유무
 
-**22일 (화)**
+**23일 (화)**
 
 - JsonObject `getString()` vs `optString()` -> key 값이 없을 때 반환하는 값 차이
 
