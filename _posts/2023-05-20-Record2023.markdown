@@ -50,3 +50,9 @@ categories: Record
 - ICMP 프로토콜 구조
 - 라우팅 테이블을 이용해서 다른 네트워크 대역과 통신하는 과정
 - 조각화
+
+**31일 (수)**
+
+- 이벤트 핸들러 네이밍
+- localStorage
+- Github Pages로 배포하는 방법
