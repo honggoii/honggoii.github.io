@@ -6,6 +6,7 @@ categories: Record
 ---
 
 [May](#may)
+[June](#june)
 
 ## May
 
@@ -56,3 +57,9 @@ categories: Record
 - 이벤트 핸들러 네이밍
 - localStorage
 - Github Pages로 배포하는 방법
+
+## June
+
+**3일 (토)**
+
+- UDP
