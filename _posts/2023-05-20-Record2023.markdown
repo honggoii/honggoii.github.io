@@ -67,3 +67,8 @@ categories: Record
 **7일 (수)**
 
 - 코틀린 공변성, 반공변성, 무공변성
+
+**8일 (목)**
+
+- Intent Flag
+- onNewIntent()
