@@ -7,6 +7,7 @@ categories: Record
 
 [May](#may)
 [June](#june)
+[July](#july)
 
 ## May
 
@@ -72,3 +73,10 @@ categories: Record
 
 - Intent Flag
 - onNewIntent()
+
+## July
+
+**3일 (월)**
+
+- 흐름제어와 해결 방법
+- 혼잡제어와 해결 방법
