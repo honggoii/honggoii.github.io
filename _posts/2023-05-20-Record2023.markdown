@@ -8,6 +8,7 @@ categories: Record
 [May](#may)
 [June](#june)
 [July](#july)
+[August](#august)
 
 ## May
 
@@ -80,3 +81,10 @@ categories: Record
 
 - 흐름제어와 해결 방법
 - 혼잡제어와 해결 방법
+
+## August
+
+**16일 (수)**
+
+- callback 함수와 Promise
+- executor, then, catch, finally
