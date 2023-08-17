@@ -88,3 +88,7 @@ categories: Record
 
 - callback 함수와 Promise
 - executor, then, catch, finally
+
+**17일 (목)**
+
+- promise chaining & error handling
