@@ -1,0 +1,28 @@
+---
+layout: post
+title: 'History'
+date: 2023-11-29 22:49:43 +0900
+categories: Web
+---
+
+내가 사용한 `history` 인터페이스의 프로퍼티
+
+#### length
+
+현재 페이지를 포함해서 `history` 에 쌓인 페이지의 갯수를 반환한다.
+
+특정 화면에서 진입하는 경우에만 `history.back()` 이 동작하지 않아서 `length` 를 알게 되었고, 정상 동작하는 경우에는 `2` 가 찍혀야 하는데, 계속 `3` 이 찍혔다.
+
+`document.referrer` 을 사용해서 현재 페이지로 이동시킨 페이지의 URI도 콘솔에 찍어 봤으나 다른게 없었다.
+
+원인은 `<a href="#none" />` 이었다. 이 태그로 진입하면 기존 URL에 #none이 붙게 되는데, 이 상태에서 `history.back()` 을 하면 #none이 붙지 않은 기존 URL로 이동하기 때문에 이전 페이지로 돌아가지 않는 것이었다. 퍼블을 수정할 수 없었기 때문에, a 태그의 기본 속성인 href로 이동하는 것을 무시하기 위해 `<a href="#" onclick="return false;" />` 코드를 적용했다.
+
+#### scrollRestoration
+
+스크롤 복원 동작을 설정할 수 있다.  
+`default`는 `auto` 이고, 브라우저가 알고있던 이전의 스크롤 위치를 잊어버리게 만들려면 값을 `manual` 로 설정한다.
+
+#### 참고 자료
+
+- [https://developer.mozilla.org/en-US/docs/Web/API/History](https://developer.mozilla.org/en-US/docs/Web/API/History)
+- [https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
